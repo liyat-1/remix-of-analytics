@@ -121,6 +121,22 @@ const paletteFor = (i: number) => PALETTES[i % PALETTES.length]!;
 const BREAKDOWN_ICON = (label: string) =>
   /phone/i.test(label) ? Phone : /address/i.test(label) ? MapPin : Mail;
 
+/** Headline icon per funnel KPI, matching the meaning of the metric. */
+const KPI_ICON: Record<string, typeof Mail> = {
+  received: FileUser,
+  masked: EyeOff,
+  missing: AlertTriangle,
+  contactable: Filter,
+  reached: Send,
+  engaged: Users,
+  identified: FileText,
+  identifiedMissing: AlertTriangle,
+  bookings: ShoppingCart,
+  bookingRate: Percent,
+  revenue: DollarSign,
+  commissionRate: TrendingUp,
+};
+
 /* -------------------------------- pieces -------------------------------- */
 
 function Delta({ value, solid }: { value: number; solid?: boolean }) {
