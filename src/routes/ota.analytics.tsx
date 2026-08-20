@@ -1,14 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import {
+  AlertTriangle,
   ArrowDownRight,
   ArrowUpRight,
   ChevronRight,
+  DollarSign,
   Download,
   EyeOff,
+  FileText,
+  FileUser,
+  Filter,
   Mail,
   MapPin,
+  Percent,
   Phone,
+  Send,
+  ShoppingCart,
+  TrendingUp,
+  Users,
 } from "lucide-react";
 
 import {
@@ -208,7 +218,7 @@ function FunnelKpi({
 }) {
   const clickable = Boolean(kpi.metric && onSelect);
   const percent = isPercentValue(kpi.value) ? Number.parseFloat(kpi.value) : null;
-  const Icon = BREAKDOWN_ICON(kpi.label);
+  const Icon = KPI_ICON[kpi.key] ?? BREAKDOWN_ICON(kpi.label);
 
   const body = (
     <>
@@ -271,7 +281,7 @@ function FunnelKpi({
               <div key={b.label} className="flex min-w-0 items-center gap-2 px-1">
                 <BIcon size={14} className="shrink-0 text-white/70" aria-hidden />
                 <span className="min-w-0">
-                  <span className="block truncate text-[10.5px] text-white/65">{b.label}</span>
+                  <span className="block text-[10.5px] leading-tight text-white/65">{b.label}</span>
                   <span className="block text-[13px] font-semibold tabular-nums text-white">
                     {b.value}
                   </span>
